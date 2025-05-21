@@ -1,31 +1,30 @@
-📝 Node.js + Express.js + Prisma + PostgreSQL + Docker – Todo App
-This is a Dockerized, full-featured Todo application built with:
 
-Node.js + Express.js for the backend server
 
-PostgreSQL for database
+# 📝 Node.js + Express.js + Prisma + PostgreSQL + Docker – Todo App
 
-Prisma ORM for database interaction
+This is a **Dockerized, full-featured Todo application** built with:
 
-JWT for authentication
+* **Node.js** + **Express.js** for the backend server
+* **PostgreSQL** for database
+* **Prisma ORM** for database interaction
+* **JWT** for authentication
+* **Docker + Docker Compose** for containerization
 
-Docker + Docker Compose for containerization
+---
 
-✨ Features
-✅ User registration & login (JWT-based authentication)
+## ✨ Features
 
-✅ Auth-protected CRUD for todos
+* ✅ User registration & login (JWT-based authentication)
+* ✅ Auth-protected **CRUD** for todos
+* ✅ Prisma-powered PostgreSQL database
+* ✅ REST Client support for API testing
+* ✅ Docker containerization for easy deployment
 
-✅ Prisma-powered PostgreSQL database
+---
 
-✅ REST Client support for API testing
+## 📁 Project Structure
 
-✅ Docker containerization for easy deployment
-
-📁 Project Structure
-graphql
-Copy
-Edit
+```
 backend-todo-app/
 │
 ├── public/                    # Frontend HTML file (basic UI)
@@ -50,91 +49,127 @@ backend-todo-app/
 ├── package.json
 ├── package-lock.json
 └── todo-app.rest              # REST Client request file (for VS Code)
-⚙️ Getting Started
-0. Prerequisites
-Install Docker Desktop
+```
 
-Node.js v18+ (if running locally outside Docker)
+---
 
-1. Clone the Repository
-bash
-Copy
-Edit
+## ⚙️ Getting Started
+
+### 0. Prerequisites
+
+* [Install Docker Desktop](https://www.docker.com/products/docker-desktop)
+* Node.js v18+ (if running locally outside Docker)
+
+---
+
+### 1. Clone the Repository
+
+```bash
 git clone https://github.com/your-username/backend-todo-app.git
 cd backend-todo-app
-2. Generate Prisma Client
-bash
-Copy
-Edit
+```
+
+---
+
+### 2. Generate Prisma Client
+
+```bash
 npx prisma generate
-3. Build Docker Containers
-bash
-Copy
-Edit
+```
+
+---
+
+### 3. Build Docker Containers
+
+```bash
 docker compose build
-4. Create & Apply Database Migrations
-bash
-Copy
-Edit
+```
+
+---
+
+### 4. Create & Apply Database Migrations
+
+```bash
 docker compose run app npx prisma migrate dev --name init
+```
+
 To apply production-style migration:
 
-bash
-Copy
-Edit
+```bash
 docker compose run app npx prisma migrate deploy
-5. Start the App + Database Containers
-bash
-Copy
-Edit
+```
+
+---
+
+### 5. Start the App + Database Containers
+
+```bash
 docker compose up
 # or in background
 docker compose up -d
-6. Access the App
-Open: http://localhost:5003
+```
 
-7. Connect to PostgreSQL (Inside Docker)
-bash
-Copy
-Edit
+---
+
+### 6. Access the App
+
+Open: [http://localhost:5003](http://localhost:5003)
+
+---
+
+### 7. Connect to PostgreSQL (Inside Docker)
+
+```bash
 docker exec -it postgres-db psql -U postgres -d todoapp
-8. Shut Down Containers
-bash
-Copy
-Edit
+```
+
+---
+
+### 8. Shut Down Containers
+
+```bash
 docker compose down
-9. Clean Up Containers
-bash
-Copy
-Edit
+```
+
+---
+
+### 9. Clean Up Containers
+
+```bash
 docker system prune
-🔌 Using the REST Client
-Install the REST Client extension in VS Code to test APIs.
+```
 
-REST Requests Included in todo-app.rest:
-POST /api/register
+---
 
-POST /api/login
+## 🔌 Using the REST Client
 
-GET /api/todos
+Install the [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) extension in VS Code to test APIs.
 
-POST /api/todos
+### REST Requests Included in `todo-app.rest`:
 
-PUT /api/todos/:id
+* `POST /api/register`
+* `POST /api/login`
+* `GET /api/todos`
+* `POST /api/todos`
+* `PUT /api/todos/:id`
+* `DELETE /api/todos/:id`
 
-DELETE /api/todos/:id
+➡️ Replace `{{token}}` with the actual JWT token from the login response.
 
-➡️ Replace {{token}} with the actual JWT token from the login response.
+---
 
-✅ Notes
-Make sure your .env file contains the following:
+## ✅ Notes
 
-env
-Copy
-Edit
+* Make sure your `.env` file contains the following:
+
+```env
 DATABASE_URL="postgresql://postgres:postgres@postgres-db:5432/todoapp"
 JWT_SECRET=your_jwt_secret
 PORT=5003
-📌 Conclusion
-This app is a clean, Dockerized starter for building secure, backend-focused apps using Node.js and PostgreSQL. It supports JWT-based authentication and Prisma for modern DB access.
+```
 
+---
+
+## 📌 Conclusion
+
+This app is a clean, Dockerized starter for building secure, backend-focused apps using Node.js and PostgreSQL. It supports JWT-based authentication and Prisma for modern DB access.
